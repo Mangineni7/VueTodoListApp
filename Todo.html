@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Todo.css">
+
+</head>
+<body >
+    <!-- <h1>I code future</h1> -->
+    <div id="app">
+     <div class="container">
+       
+        <h1>ToDoList</h1>
+      
+   <div v-if="!isEditing">
+         <input type="text" class = "task" v-model="todo">
+         <button class="add" @click="addTodo()">Add</button>
+   </div>
+     <div v-else>
+        <input type="text" class = "task" v-model="todo">
+        <button  class="add" @click=" updateTodo()">Update</button>
+    </div>
+    <div id="div">
+        <ul class="task-list">
+           
+            <li  class="task-list-item"  v-for="(todo , index) in todos">
+                
+            <input type="checkbox" class="input" v-model="todo.completed">
+            <span>{{todo.task}}</span>
+            <button  id ="one" v-if="!todo.completed"  @click="editTodo(index, todo)">Edit</button>
+            <button  id ="two" @click="deleteTodo(index)">Delete</button>
+        
+            </li>
+       
+        </ul>
+
+    </div>
+   
+
+     </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="Todo.js"></script>
+</body>
+
+</html>
